@@ -10,13 +10,13 @@ body {
   margin: 0;
   overflow: hidden;
   background-color: rgba(10, 10, 10, 0.95);
-  /* Centering of all content */
+  /* Centering of wrapper in the center */
   display: grid;
   place-items: center;
 }
 
 #wrapper {
-  /* Here we set the golden ratio */
+  /* Here we set the golden ratio 🥇 */
   aspect-ratio: 1.618;
   width: 90vmin;
   position: relative;
@@ -27,12 +27,12 @@ body {
 }
 
 /* Default styling for all child shapes */
-#wrapper > .shape {
+.shape {
   height: 30%;
   width: 30%;
   /* background-color: rgba(255, 255, 255, 5%); */
-  /* We want shapes to move absolute :) free because we are using percent
-  for their size "relative" to the position of the wrapper. */
+  /* We want shapes to move absolute :) free because we are using percent for
+  their size "relative" to the wrapper, not the body. */
   position: absolute;
   /* The following properties are to be transition smoothly for each shape
   along with a duration and it not to move linear. */
@@ -40,49 +40,51 @@ body {
   transition-duration: 750ms;
   transition-timing-function: ease-in-out;
 }
-/* colors */
-#wrapper > .shape:nth-child(1) {
+/* individual shape colors */
+.shape:nth-child(1) {
   background-color: hsl(200, 15%, 73%);
-  border: 2px solid hsl(200, 15%, 71%);
+  border: 2px solid hsl(200, 15%, 70%);
   z-index: 2;
 }
-#wrapper > .shape:nth-child(2) {
+.shape:nth-child(2) {
   background-color: hsl(0, 0%, 96%);
-  border: 2px solid hsl(0, 0%, 94%);
+  border: 2px solid hsl(0, 0%, 93%);
   z-index: 2;
 }
-#wrapper > .shape:nth-child(3) {
+.shape:nth-child(3) {
   background-color: hsl(267, 72%, 63%);
-  border: 2px solid hsl(267, 72%, 61%);
+  border: 2px solid hsl(267, 72%, 60%);
   z-index: 2;
 }
-#wrapper > .shape:nth-child(4) {
+.shape:nth-child(4) {
   background-color: hsl(324, 84%, 65%);
-  border: 2px solid hsl(324, 84%, 63%);
+  border: 2px solid hsl(324, 84%, 62%);
   z-index: 2;
 }
-#wrapper > .shape:nth-child(5) {
+.shape:nth-child(5) {
   background-color: hsl(52, 99%, 62%);
-  border: 2px solid hsl(52, 99%, 60%);
+  border: 2px solid hsl(52, 99%, 59%);
   z-index: 2;
 }
-#wrapper > .shape:nth-child(6) {
+.shape:nth-child(6) {
   background-color: hsl(195, 100%, 49%);
-  border: 2px solid hsl(195, 100%, 47%);
+  border: 2px solid hsl(195, 100%, 46%);
   z-index: 2;
 }
-#wrapper > .shape:nth-child(7) {
+.shape:nth-child(7) {
   background-color: hsl(172, 100%, 48%);
   border: 2px solid hsl(172, 100%, 45%);
   z-index: 2;
 }
 
-/* The goal is to select a random configuration & roundness.
-Here is where things get interesting. First start with configuration 1 but
-3 different layout configuration(s) each child can take on. Additionally,
-an applied 3 different types of roundness is set on all of them. Make sure
-the id(s) match with the wrapper div, and that you also nth-child down the
-different layout types the child shapes can be setup with. */
+/* Goal: is to select a random configuration & roundness per data-configuration.
+First start with configuration=1 and then build up different layouts, that each
+child can takes on with the use of `nth-child` selector. Then apply 3 different
+types of roundness datasets that also are set on all shapes here. Make sure the
+id(s) match with the wrapper div and that you also `nth-child` down in order so
+different layout types apply to child shapes can be setup with. */
+
+/* layout configuration (combinations)*/
 #wrapper[data-configuration="1"] > .shape:nth-child(1) {
   left: 0%;
   top: 0%;
@@ -209,6 +211,7 @@ different layout types the child shapes can be setup with. */
   height: 32%;
   width: 20%;
 }
+/* roundness configuration */
 #wrapper[data-roundness="1"] > .shape {
   border-radius: 6rem;
 }
@@ -218,7 +221,9 @@ different layout types the child shapes can be setup with. */
 #wrapper[data-roundness="3"] > .shape {
   border-radius: 30rem;
 }
-/* Roundness 4 is the only setup that is varying radius for each shape. */
+
+/* Optional: 
+Roundness 4 is the only setup that is varying radius for each separate shape. */
 #wrapper[data-roundness="4"] > .shape:nth-child(1) {
   border-bottom-left-radius: 10rem;
 }
