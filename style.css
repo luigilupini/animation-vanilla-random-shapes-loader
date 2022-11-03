@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* We want the body to take all of the available area */
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+  background-color: rgba(10, 10, 10, 0.95);
+  /* Centering of all content */
+  display: grid;
+  place-items: center;
+}
+
+#wrapper {
+  /* Here we set the golden ratio */
+  aspect-ratio: 1.618;
+  width: 90vmin;
+  position: relative;
+  /* border: rgba(255, 255, 255, 0.4) 2px solid; */
+  /* border-radius: 2px; */
+  /* box-shadow: 0px 4px 28px rgba(255, 255, 255, 0.4); */
+  overflow: hidden;
+}
+
+/* Default styling for all child shapes */
+#wrapper > .shape {
+  height: 30%;
+  width: 30%;
+  /* background-color: rgba(255, 255, 255, 5%); */
+  /* We want shapes to move absolute :) free because we are using percent
+  for their size "relative" to the position of the wrapper. */
+  position: absolute;
+  /* The following properties are to be transition smoothly for each shape
+  along with a duration and it not to move linear. */
+  transition: left, top, height, width, border-radius;
+  transition-duration: 750ms;
+  transition-timing-function: ease-in-out;
+}
+/* colors */
+#wrapper > .shape:nth-child(1) {
+  background-color: hsl(200, 15%, 73%);
+  border: 2px solid hsl(200, 15%, 71%);
+  z-index: 2;
+}
+#wrapper > .shape:nth-child(2) {
+  background-color: hsl(0, 0%, 96%);
+  border: 2px solid hsl(0, 0%, 94%);
+  z-index: 2;
+}
+#wrapper > .shape:nth-child(3) {
+  background-color: hsl(267, 72%, 63%);
+  border: 2px solid hsl(267, 72%, 61%);
+  z-index: 2;
+}
+#wrapper > .shape:nth-child(4) {
+  background-color: hsl(324, 84%, 65%);
+  border: 2px solid hsl(324, 84%, 63%);
+  z-index: 2;
+}
+#wrapper > .shape:nth-child(5) {
+  background-color: hsl(52, 99%, 62%);
+  border: 2px solid hsl(52, 99%, 60%);
+  z-index: 2;
+}
+#wrapper > .shape:nth-child(6) {
+  background-color: hsl(195, 100%, 49%);
+  border: 2px solid hsl(195, 100%, 47%);
+  z-index: 2;
+}
+#wrapper > .shape:nth-child(7) {
+  background-color: hsl(172, 100%, 48%);
+  border: 2px solid hsl(172, 100%, 45%);
+  z-index: 2;
+}
+
+/* The goal is to select a random configuration & roundness.
+Here is where things get interesting. First start with configuration 1 but
+3 different layout configuration(s) each child can take on. Additionally,
+an applied 3 different types of roundness is set on all of them. Make sure
+the id(s) match with the wrapper div, and that you also nth-child down the
+different layout types the child shapes can be setup with. */
+#wrapper[data-configuration="1"] > .shape:nth-child(1) {
+  left: 0%;
+  top: 0%;
+  height: 50%;
+  width: 20%;
+}
+#wrapper[data-configuration="1"] > .shape:nth-child(2) {
+  left: 20%;
+  top: 0%;
+  height: 50%;
+  width: 30%;
+}
+#wrapper[data-configuration="1"] > .shape:nth-child(3) {
+  left: 50%;
+  top: 0%;
+  height: 100%;
+  width: 50%;
+}
+#wrapper[data-configuration="1"] > .shape:nth-child(4) {
+  left: 0%;
+  top: 50%;
+  height: 50%;
+  width: 30%;
+}
+#wrapper[data-configuration="1"] > .shape:nth-child(5) {
+  left: 30%;
+  top: 50%;
+  height: 50%;
+  width: 20%;
+}
+#wrapper[data-configuration="1"] > .shape:nth-child(6) {
+  left: 70%;
+  top: 50%;
+  height: 50%;
+  width: 30%;
+}
+#wrapper[data-configuration="1"] > .shape:nth-child(7) {
+  left: 85%;
+  top: 75%;
+  height: 25%;
+  width: 15%;
+}
+#wrapper[data-configuration="2"] > .shape:nth-child(1) {
+  left: 25%;
+  top: 20%;
+  height: 80%;
+  width: 15%;
+}
+#wrapper[data-configuration="2"] > .shape:nth-child(2) {
+  left: 40%;
+  top: 20%;
+  height: 50%;
+  width: 10%;
+}
+#wrapper[data-configuration="2"] > .shape:nth-child(3) {
+  left: 50%;
+  top: 0%;
+  height: 100%;
+  width: 25%;
+}
+#wrapper[data-configuration="2"] > .shape:nth-child(4) {
+  left: 0%;
+  top: 0%;
+  height: 50%;
+  width: 10%;
+}
+#wrapper[data-configuration="2"] > .shape:nth-child(5) {
+  left: 10%;
+  top: 0%;
+  height: 70%;
+  width: 15%;
+}
+#wrapper[data-configuration="2"] > .shape:nth-child(6) {
+  left: 75%;
+  top: 10%;
+  height: 80%;
+  width: 15%;
+}
+#wrapper[data-configuration="2"] > .shape:nth-child(7) {
+  left: 90%;
+  top: 40%;
+  height: 60%;
+  width: 10%;
+}
+#wrapper[data-configuration="3"] > .shape:nth-child(1) {
+  left: 0%;
+  top: 16.5%;
+  height: 32%;
+  width: 20%;
+}
+#wrapper[data-configuration="3"] > .shape:nth-child(2) {
+  left: 20%;
+  top: 2.7%;
+  height: 55%;
+  width: 34%;
+}
+#wrapper[data-configuration="3"] > .shape:nth-child(3) {
+  left: 38%;
+  top: 0%;
+  height: 100%;
+  width: 62%;
+}
+#wrapper[data-configuration="3"] > .shape:nth-child(4) {
+  left: 0%;
+  top: 37.3%;
+  height: 55%;
+  width: 34%;
+}
+#wrapper[data-configuration="3"] > .shape:nth-child(5) {
+  left: 34%;
+  top: 56.4%;
+  height: 32%;
+  width: 20%;
+}
+#wrapper[data-configuration="3"] > .shape:nth-child(6) {
+  left: 66%;
+  top: 45%;
+  height: 55%;
+  width: 34%;
+}
+#wrapper[data-configuration="3"] > .shape:nth-child(7) {
+  left: 80%;
+  top: 68%;
+  height: 32%;
+  width: 20%;
+}
+#wrapper[data-roundness="1"] > .shape {
+  border-radius: 6rem;
+}
+#wrapper[data-roundness="2"] > .shape {
+  border-radius: 0rem;
+}
+#wrapper[data-roundness="3"] > .shape {
+  border-radius: 30rem;
+}
+/* Roundness 4 is the only setup that is varying radius for each shape. */
+#wrapper[data-roundness="4"] > .shape:nth-child(1) {
+  border-bottom-left-radius: 10rem;
+}
+#wrapper[data-roundness="4"] > .shape:nth-child(2) {
+  border-radius: 20rem;
+}
+#wrapper[data-roundness="4"] > .shape:nth-child(3) {
+  border-top-right-radius: 12rem;
+}
+#wrapper[data-roundness="4"] > .shape:nth-child(4) {
+  border-top-right-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+}
+#wrapper[data-roundness="4"] > .shape:nth-child(5) {
+  border-bottom-left-radius: 10rem;
+}
+#wrapper[data-roundness="4"] > .shape:nth-child(6) {
+  border-top-left-radius: 16rem;
+}
+#wrapper[data-roundness="4"] > .shape:nth-child(7) {
+  border-top-left-radius: 10rem;
+}
